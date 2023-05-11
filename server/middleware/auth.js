@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 
+// using token logic to make sure we verify user access. 
 export const verifyToken = async (req, res, next) => {
     try {
         let token = req.header("Authorization");
@@ -19,3 +20,4 @@ export const verifyToken = async (req, res, next) => {
         res.status(500).json({ error: err.message })
     };
 };
+
