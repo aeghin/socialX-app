@@ -17,6 +17,10 @@ import { register } from './controllers/auth.js';
 import { verifyToken } from './middleware/auth.js';
 import { createPost } from './controllers/posts.js';
 
+import User from './models/User.js';
+import Post from './models/Post.js';
+import { users, posts } from './data/index.js';
+
 // CONFIGURATIONS
 
 const __fileName = fileURLToPath(import.meta.url);
@@ -68,4 +72,7 @@ mongoose.connect(process.env.MONGODB_URL, {
     useUnifiedTopology: true,
 }).then(() => {
     app.listen(PORT, () => console.log(`Server is running on port:${PORT}`));
+   // dUMMY DATA 
+    // User.insertMany(users);
+    // Post.insertMany(posts);
 }).catch(() => console.log('Error, did not connect!'));
