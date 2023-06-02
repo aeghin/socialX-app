@@ -35,7 +35,7 @@ const LoginPage = () => {
             <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
                 Welcome to SocialX, the social media for sociopaths!
             </Typography>
-
+            <Form />
         </Box>
     </Box>
 };
