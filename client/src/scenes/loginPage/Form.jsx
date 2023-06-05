@@ -190,7 +190,7 @@ const Form = () => {
                                 >
                                     <Dropzone
                                         acceptedFiles=".jpg,.jpeg,.png"
-                                        multiple="false"
+                                        multiple={false}
                                         onDrop={(acceptedFiles) =>
                                             setFieldValue("picture", acceptedFiles[0])
                                         }
@@ -283,4 +283,4 @@ const Form = () => {
     )
 };
 
-
+export default Form;
