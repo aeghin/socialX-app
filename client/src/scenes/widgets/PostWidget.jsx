@@ -1,4 +1,5 @@
-import { ChatBubbleOutlineOutlined, 
+import {
+    ChatBubbleOutlineOutlined,
     FavoriteBorderOutlines,
     FavoriteOutlined,
     ShareOutlined,
@@ -11,6 +12,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
 
-const PostWidget = ({}) => {
+const PostWidget = ({ }) => {
 
 };

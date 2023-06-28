@@ -68,9 +68,9 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
             )}
         </>
-    )
+    );
 
 
-}
+};
 
 export default PostsWidget;
