@@ -1,12 +1,14 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+
+// import user model to use in the register function
 import User from '../models/User.js';
 
 // REGISTER USER
 
 export const register = async (req, res) => {
     try {
-
+        // Destructure request body object from the front-end. 
         const {
             firstName,
             lastName,
@@ -36,6 +38,7 @@ export const register = async (req, res) => {
 
         const savedUser = await newUser.save();
 
+        // sending back the user to the front-end can receive the correct, updated user information
         res.status(201).json(savedUser);
 
     } catch (err) {
