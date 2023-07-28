@@ -38,6 +38,7 @@ const UserWidget = ({ userId, picturePath }) => {
         return null;
     }
 
+        console.log(user);
     const {
         firstName,
         lastName,

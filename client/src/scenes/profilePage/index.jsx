@@ -31,7 +31,7 @@ const ProfilePage = () => {
 
     if (!user) return null;
 
-
+    // console.log(user)
     return (
         <Box>
             <Navbar />
