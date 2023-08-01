@@ -35,7 +35,7 @@ export const register = async (req, res) => {
             viewedProfile: Math.floor(Math.random() * 10000),
             impressions: Math.floor(Math.random() * 10000)
         })
-
+         //save user to db
         const savedUser = await newUser.save();
 
         // sending back the user to the front-end can receive the correct, updated user information
@@ -59,13 +59,15 @@ export const login = async (req, res) => {
             return res.status(400).json({ msg: "User does not exist" })
         };
         // this will proceed is previous conditonal is not true.
+        // comparing the passwords from incoming and the database password 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(400).json({ msg: "Invalid credentials" })
         };
 
-        
+        // signing with the user id and passing the secret string
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+        // delete the password so it doesn't get sent to the front-end
         delete user.password;
         res.status(200).json({ token, user});
 
