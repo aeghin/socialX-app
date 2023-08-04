@@ -5,7 +5,7 @@ import User from "../models/User.js";
 
 export const createPost = async (req, res) => {
     try {
-
+        // creating post 
         const { userId, description, picturePath } = req.body;
         const user = await User.findById(userId);
         const newPost = new Post({
@@ -19,11 +19,12 @@ export const createPost = async (req, res) => {
             likes: {},
             comments: []
         });
-
+        // saving post
         await newPost.save();
 
+            // grabbing all past and newly create post and sending this to the front end
         const post = await Post.find();
-
+        // SENDING THE MOST UP-TO-DATE POST(s)
         res.status(201).json(post);
 
     } catch (err) {
@@ -63,8 +64,9 @@ export const likePost = async (req, res) => {
         const { id } = req.params;
         const { userId } = req.body;
         const post = await Post.findById(id);
+        // checking if userid exists
         const isLiked = post.likes.get(userId);
-
+        // if it does...
         if (isLiked) {
             post.likes.delete(userId);
         } else {
@@ -73,11 +75,12 @@ export const likePost = async (req, res) => {
 
         const updatedPost = await Post.findByIdAndUpdate(
             id,
+            // passing the newest updated likes
             { likes: post.likes },
             { new: true }
         );
 
-
+            // update front-end once we passed the likes
         res.status(200).json(updatedPost);
     } catch (err) {
         res.status(404).json({ message: err.message });
