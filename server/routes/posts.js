@@ -5,7 +5,7 @@ import { verifyToken } from "../middleware/auth.js";
 const router = express.Router();
 
 // READ
-// get all the posts on the feed from the database
+// get all the posts on the feed from the database to display at the home page
 router.get("/", verifyToken, getFeedPosts);
 
 //get posts by user
