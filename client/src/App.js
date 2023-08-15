@@ -21,6 +21,7 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          {/* using react router to make our paths with corresponding component. */}
           <Routes>
             <Route path="/" element={<LoginPage />}></Route>
             <Route path="/home" element={isAuth ? <HomePage /> : <Navigate to="/" />}></Route>
