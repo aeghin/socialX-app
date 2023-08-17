@@ -11,7 +11,7 @@ import { themeSettings } from "theme";
 
 
 function App() {
-
+  // grab the current state with useSelector.
   const mode = useSelector((state) => state.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   const isAuth = Boolean(useSelector((state) => state.token));
@@ -25,6 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LoginPage />}></Route>
             <Route path="/home" element={isAuth ? <HomePage /> : <Navigate to="/" />}></Route>
+            {/* this path uses react router useParams(). :userId will be access later on using that custom hook from react router dom */}
             <Route path="/profile/:userId" element={isAuth ? <ProfilePage /> : <Navigate to="/" />}></Route>
           </Routes>
         </ThemeProvider>
